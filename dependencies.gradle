@@ -1,0 +1,50 @@
+ext.versions = [
+        minSdk               : 21,
+        compileSdk           : 30,
+        versionCode          : 4,
+        versionName          : '1.0',
+
+        gradleBuildTool      : '7.1.0-alpha01',
+        spotlessGradle       : '5.13.0',
+        kotlin               : '1.5.10',
+
+        // material
+        materialVersion      : '1.3.0-alpha03',
+
+        // compose
+        composeVersion       : '1.0.0-beta09',
+        constraintVersion    : '1.0.0-alpha07',
+        activityVersion      : '1.3.0-beta01',
+        composeNavVersion    : '2.4.0-alpha02',
+        accompanistVersion   : "0.12.0",
+
+        // androidx jetpack
+        coreKtx              : '1.5.0-alpha03',
+
+        // architecture components
+        fragmentVersion      : '1.3.1',
+        lifecycleVersion     : '2.3.1',
+        roomVersion          : '2.3.0',
+        archCompomentVersion : '2.1.0',
+
+        // startup
+        startupVersion       : '1.0.0',
+
+        // di
+        hiltCoreVersion      : '2.37',
+        hiltVersion          : '1.0.0',
+        hiltComposeNavigation: '1.0.0-alpha03',
+//
+//        // network
+//        retrofitVersion      : '2.9.0',
+//        okhttpVersion        : '4.7.2',
+
+        // coroutines
+        coroutinesVersion    : '1.4.1',
+
+        // debugging
+        timberVersion        : '4.7.1',
+
+        // kotlinx date-time https://github.com/Kotlin/kotlinx-datetime
+        kotlinxDateTime      : '0.2.1'
+]
