@@ -1,4 +1,7 @@
 package com.day.timer.utils
 
-class GeneralUtils {
+object GeneralUtils {
+
+    fun Long?.orDef() = this ?: 0L
+
 }
