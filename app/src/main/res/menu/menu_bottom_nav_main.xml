@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/routine"
+        android:icon="@drawable/ic_calendar_day"
+        android:title="@string/routine" />
+
+    <item
+        android:id="@+id/timers"
+        android:icon="@drawable/ic_timer"
+        android:title="@string/timers" />
+</menu>

@@ -1,11 +1,28 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Mortality" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Mortality" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/red700</item>
-        <item name="colorPrimaryDark">@color/red700</item>
-        <item name="colorAccent">@color/red700</item>
-        <item name="android:statusBarColor">@color/status_bar</item>
+        <item name="colorPrimary">@color/theme_1</item>
+        <item name="colorPrimaryVariant">@color/theme_1</item>
+        <item name="colorOnPrimary">@color/theme_4</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/theme_4</item>
+        <item name="colorSecondaryVariant">@color/theme_4</item>
+
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?colorSurface</item>>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">@bool/lightStatusNav</item>
+
         <!-- Customize your theme here. -->
+        <item name="fontFamily">@font/font_mortality</item>
+
+        <item name="colorSurface">@color/theme_4</item>
+    </style>
+
+    <style name="MortalitySplashTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">?colorPrimary</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.Mortality</item>
     </style>
 </resources>

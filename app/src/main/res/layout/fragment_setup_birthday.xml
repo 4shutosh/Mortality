@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root_constraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_accent_blue">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/fragment_setup_birthday_heading"
+            android:textColor="@color/theme_1"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_heading"
+            app:layout_constraintVertical_bias="0.3"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/anim_plant"
+            app:lottie_speed="1.5" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintEnd_toEndOf="@id/lottie"
+            app:layout_constraintStart_toStartOf="@id/lottie"
+            app:layout_constraintTop_toBottomOf="@id/lottie"
+            app:strokeColor="@color/light_accent_blue">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_text_input"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/theme_3"
+                android:duplicateParentState="true"
+                android:gravity="center"
+                android:hint="@string/birthday_hint"
+                android:padding="10dp"
+                android:textColor="@color/theme_1"
+                android:textColorHint="@color/theme_1"
+                android:textSize="18sp" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
