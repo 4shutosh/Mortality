@@ -4,17 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.OverScroller
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
+import com.planner.mortality.R
 import com.planner.mortality.databinding.FragmentSetupBinding
 import com.planner.mortality.ui.setup.steps.FragmentSetupAbout
 import com.planner.mortality.ui.setup.steps.FragmentSetupBirthday
+import com.planner.mortality.ui.setup.steps.FragmentSetupDeath
 import com.planner.mortality.utils.ViewPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -78,6 +79,10 @@ class FragmentSetup : Fragment() {
             is FragmentSetupViewModel.Command.Notify -> {
                 Snackbar.make(binding.root, it.message, Snackbar.LENGTH_LONG).show()
             }
+            FragmentSetupViewModel.Command.EndSetupProcess -> {
+                val navController = findNavController()
+                navController.navigate(R.id.action_setup_to_main)
+            }
         }
     }
 
@@ -105,7 +110,8 @@ class FragmentSetup : Fragment() {
     }
 
     companion object {
-        val listOfChildPages = listOf(FragmentSetupAbout(), FragmentSetupBirthday())
-        val ctaButtonText = listOf("Get Started", "Proceed →")
+        val listOfChildPages =
+            listOf(FragmentSetupAbout(), FragmentSetupBirthday(), FragmentSetupDeath())
+        val ctaButtonText = listOf("Get Started", "Proceed →", "Next Step →")
     }
 }

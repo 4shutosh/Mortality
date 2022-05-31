@@ -35,7 +35,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
             android:layout_marginBottom="20dp"
-            android:backgroundTint="#354259"
             android:text="@string/get_started"
             android:textSize="18sp"
             android:textStyle="bold"

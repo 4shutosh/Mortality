@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
     <style name="Heading1" parent="Widget.AppCompat.TextView">
         <item name="android:includeFontPadding">false</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="MortalityWindowAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_right</item>
     </style>
 </resources>

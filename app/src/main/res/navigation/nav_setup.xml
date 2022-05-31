@@ -9,6 +9,15 @@
         android:id="@+id/fragmentSetup"
         android:name="com.planner.mortality.ui.setup.FragmentSetup"
         android:label="FragmentSetup"
-        tools:layout="@layout/fragment_setup" />
+        tools:layout="@layout/fragment_setup">
 
+        <action
+            android:id="@+id/action_setup_to_main"
+            app:destination="@id/nav_main"
+            app:popUpTo="@id/nav_main"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <include app:graph="@navigation/nav_main" />
 </navigation>

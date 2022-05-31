@@ -10,7 +10,7 @@ import com.planner.mortality.R
 import com.planner.mortality.databinding.FragmentSetupBirthdayBinding
 import com.planner.mortality.ui.setup.FragmentSetupViewModel
 import com.planner.mortality.utils.MortalityPicker
-import com.planner.mortality.utils.extensions.getFormattedDate
+import com.planner.mortality.utils.getFormattedDate
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

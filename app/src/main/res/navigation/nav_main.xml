@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_main">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/fragmentRoutine">
 
+    <fragment
+        android:id="@+id/fragmentRoutine"
+        android:name="com.planner.mortality.ui.routine.FragmentRoutine"
+        android:label="FragmentRoutine"
+        tools:layout="@layout/fragment_routine" />
+
+    <fragment
+        android:id="@+id/fragmentTimer"
+        android:name="com.planner.mortality.ui.timer.FragmentTimer"
+        android:label="FragmentTimer"
+        tools:layout="@layout/fragment_timer" />
 </navigation>

@@ -11,6 +11,10 @@
     <string name="setup_about">You are going to <b>DIE</b> one day,\nand you have limited time to live\n <b>ONE LIFE</b></string>
     <string name="setup_about_1">This app aims to help you realise &amp; manage TIME more effectively</string>
     <string name="pick_your_birthdate">Select your birth date</string>
+    <string name="fragment_setup_death_heading">Life Expectancy</string>
+    <string name="ever_thought_about_death">Ever thought about death?\nAt what age would you like to die?</string>
+    <string name="control_death">Never thought? Take a chill pill 💊\n\n💡 You are in CONTROL of your quality of life and life span based on your habits</string>
+    <string name="death_hint">Lifespan</string>
 
 
 </resources>

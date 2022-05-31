@@ -3,15 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../layout/compose-model-1624941645894.xml" value="0.29307432432432434" />
-        <entry key="../../../../layout/compose-model-1625038431955.xml" value="0.29307432432432434" />
-        <entry key="../../../../layout/compose-model-1625039487699.xml" value="0.29307432432432434" />
-        <entry key="../../../../layout/compose-model-1627532850686.xml" value="0.16944444444444445" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1715" />
+        <entry key="app/src/main/res/drawable/background_rounded_16.xml" value="0.1715" />
+        <entry key="app/src/main/res/drawable/default_dot.xml" value="0.1715" />
+        <entry key="app/src/main/res/drawable/selected_dot.xml" value="0.1715" />
+        <entry key="app/src/main/res/drawable/tab_dot_selector.xml" value="0.1715" />
+        <entry key="app/src/main/res/font/font_mortality.xml" value="0.22671009771986972" />
+        <entry key="app/src/main/res/layout/activity_mortality_main.xml" value="0.2076388888888889" />
+        <entry key="app/src/main/res/layout/fragment_routine.xml" value="0.20986842105263157" />
+        <entry key="app/src/main/res/layout/fragment_setup.xml" value="0.20986842105263157" />
+        <entry key="app/src/main/res/layout/fragment_setup_about.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_setup_birthday.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_setup_death.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_setup_sleep.xml" value="0.20986842105263157" />
+        <entry key="app/src/main/res/layout/fragment_timer.xml" value="0.20986842105263157" />
+        <entry key="app/src/main/res/menu/menu_bottom_nav_main.xml" value="0.3333333333333333" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
