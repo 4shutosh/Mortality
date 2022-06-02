@@ -3,6 +3,7 @@ package com.planner.mortality.di
 import android.content.Context
 import android.os.Debug
 import androidx.room.Room
+import com.planner.mortality.data.dao.UserDataDao
 import com.planner.mortality.data.database.MortalityRoomDatabase
 import dagger.Module
 import dagger.Provides
@@ -35,6 +36,7 @@ class RoomDbModule {
 @Module
 class DaoModule {
 
-
+    @Provides
+    fun provideUserDataDao(db: MortalityRoomDatabase): UserDataDao = db.userDataDao()
 
 }

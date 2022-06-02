@@ -18,6 +18,4 @@
             app:popUpToInclusive="true" />
 
     </fragment>
-
-    <include app:graph="@navigation/nav_main" />
 </navigation>

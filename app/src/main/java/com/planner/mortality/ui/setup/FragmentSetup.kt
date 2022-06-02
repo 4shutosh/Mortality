@@ -42,7 +42,7 @@ class FragmentSetup : Fragment() {
     }
 
     private fun setUpViews() {
-        activity?.onBackPressedDispatcher?.addCallback(onBackPress)
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, onBackPress)
 
         binding.viewPager.apply {
             adapter = ViewPagerAdapter(this@FragmentSetup, listOfChildPages)
@@ -101,9 +101,7 @@ class FragmentSetup : Fragment() {
 
     private val onBackPress = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
-            if (binding.viewPager.currentItem == 0) {
-                activity?.onBackPressed()
-            } else {
+            if (binding.viewPager.currentItem != 0) {
                 binding.viewPager.currentItem -= 1
             }
         }

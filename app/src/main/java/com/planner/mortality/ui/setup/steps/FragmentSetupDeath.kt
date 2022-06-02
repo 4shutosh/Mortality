@@ -1,6 +1,5 @@
 package com.planner.mortality.ui.setup.steps
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.google.android.material.slider.Slider
 import com.planner.mortality.R
 import com.planner.mortality.databinding.FragmentSetupDeathBinding
 import com.planner.mortality.ui.setup.FragmentSetupViewModel

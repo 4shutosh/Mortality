@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/routine"
+        android:id="@+id/fragmentRoutine"
         android:icon="@drawable/ic_calendar_day"
         android:title="@string/routine" />
 
     <item
-        android:id="@+id/timers"
+        android:id="@+id/fragmentTimer"
         android:icon="@drawable/ic_timer"
         android:title="@string/timers" />
 </menu>

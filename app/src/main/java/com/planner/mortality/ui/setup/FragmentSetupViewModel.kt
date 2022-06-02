@@ -3,11 +3,14 @@ package com.planner.mortality.ui.setup
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.planner.mortality.data.dao.UserDataDao
+import com.planner.mortality.data.entities.UserDataEntity
 import com.planner.mortality.utils.AppCoroutineDispatcher
 import com.planner.mortality.utils.SingleLiveEvent
 import com.planner.mortality.utils.extensions.toLiveData
 import com.planner.mortality.utils.getTimeDifferenceInYears
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import logcat.logcat
 import javax.inject.Inject
@@ -15,6 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class FragmentSetupViewModel @Inject constructor(
     private val appCoroutineDispatcher: AppCoroutineDispatcher,
+    private val userDataDao: UserDataDao,
 ) : ViewModel() {
 
     sealed class Command {
@@ -26,8 +30,8 @@ class FragmentSetupViewModel @Inject constructor(
     }
 
     data class MortalityUserSetupModel(
-        val dateOfBirthTimeStamp: Long? = -1L,
-        val userAge: Int? = -1,
+        val dateOfBirthTimeStamp: Long = -1L,
+        val userAge: Int = -1,
         val lifeExpectancyYears: Int = -1,
     )
 
@@ -59,10 +63,24 @@ class FragmentSetupViewModel @Inject constructor(
                     else _command.postValue(Command.Notify("Please add your birth date"))
                 }
                 PAGE_DEATH -> {
-                    _command.postValue(Command.EndSetupProcess)
+                    userSetupComplete()
                 }
                 else -> Unit
             }
+        }
+    }
+
+    private fun userSetupComplete() {
+        viewModelScope.launch(appCoroutineDispatcher.io) {
+            if (setupModel.dateOfBirthTimeStamp != -1L) {
+                userDataDao.insert(UserDataEntity(
+                    dateOfBirthTimeStamp = setupModel.dateOfBirthTimeStamp,
+                    lifeExpectancyYears = setupModel.lifeExpectancyYears,
+                ))
+            }
+            _command.postValue(Command.Notify("Setup Complete!"))
+            delay(1500)
+            _command.postValue(Command.EndSetupProcess)
         }
     }
 

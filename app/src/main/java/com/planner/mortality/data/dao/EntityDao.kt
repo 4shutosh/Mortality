@@ -9,7 +9,8 @@ import com.planner.mortality.data.entities.BaseEntity
 
 
 abstract class EntityDao<in E : BaseEntity> {
-    @Insert
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract suspend fun insert(entity: E): Long
 
     @Insert
