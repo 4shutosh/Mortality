@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/drawable/selected_dot.xml" value="0.1715" />
         <entry key="app/src/main/res/drawable/tab_dot_selector.xml" value="0.1715" />
         <entry key="app/src/main/res/font/font_mortality.xml" value="0.22671009771986972" />
+        <entry key="app/src/main/res/layout/activity_holder.xml" value="0.20855263157894738" />
         <entry key="app/src/main/res/layout/activity_mortality_main.xml" value="0.2076388888888889" />
         <entry key="app/src/main/res/layout/fragment_routine.xml" value="0.20986842105263157" />
         <entry key="app/src/main/res/layout/fragment_setup.xml" value="0.20986842105263157" />
@@ -17,6 +18,7 @@
         <entry key="app/src/main/res/layout/fragment_setup_death.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_setup_sleep.xml" value="0.20986842105263157" />
         <entry key="app/src/main/res/layout/fragment_timer.xml" value="0.20986842105263157" />
+        <entry key="app/src/main/res/layout/layout_mortality_timer.xml" value="0.335" />
         <entry key="app/src/main/res/menu/menu_bottom_nav_main.xml" value="0.3333333333333333" />
       </map>
     </option>

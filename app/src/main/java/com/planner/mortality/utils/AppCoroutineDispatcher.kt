@@ -6,5 +6,5 @@ import kotlinx.coroutines.Dispatchers
 data class AppCoroutineDispatcher(
     val io: CoroutineDispatcher = Dispatchers.IO,
     val computation: CoroutineDispatcher = Dispatchers.Default,
-    val main: CoroutineDispatcher = Dispatchers.Main
+    val main: CoroutineDispatcher = Dispatchers.Main,
 )

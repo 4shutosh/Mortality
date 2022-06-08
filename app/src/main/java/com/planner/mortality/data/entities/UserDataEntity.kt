@@ -8,5 +8,6 @@ data class UserDataEntity(
     @PrimaryKey override val id: Long = 0L,
     val dateOfBirthTimeStamp: Long,
     val lifeExpectancyYears: Int,
+    val deathTimestamp: Long,
 ) : BaseEntity {
 }

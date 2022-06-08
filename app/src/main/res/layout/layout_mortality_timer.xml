@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/root_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?colorSurface"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_years"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            tools:text="10 \nYears" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_months"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            tools:text="10 \nMonths" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_days"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            tools:text="250 \nDays" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_hours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            tools:text="10 \nHours" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            tools:text="50 \nMin" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_seconds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            tools:text="45 \nSeconds" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.planner.mortality.data.entities.UserDataEntity
 
 @Database(
-    version = 1,
+    version = 2,
     exportSchema = false,
     entities = [UserDataEntity::class]
 )

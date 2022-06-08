@@ -1,6 +1,5 @@
 package com.planner.mortality
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -9,8 +8,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.planner.mortality.ui.MortalityMainActivity
+import com.planner.mortality.ui.holder.HolderActivity
+import com.planner.mortality.ui.setup.FragmentSetup
 import dagger.hilt.android.AndroidEntryPoint
-import logcat.logcat
 
 // custom splash screen for the splash screen api
 @AndroidEntryPoint
@@ -42,11 +42,19 @@ class SplashActivity : AppCompatActivity() {
         val content: View = findViewById(android.R.id.content)
         viewModel.onBoardingViewState.observe(this) { viewState ->
             if (viewState.isReady) {
-                val mainActivityIntent = MortalityMainActivity.instance(this,
-                    userSetupDone = viewState.isUserSetupDone)
-                mainActivityIntent.flags =
-                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(mainActivityIntent)
+                if (viewState.isUserSetupDone) {
+                    val mainActivityIntent = MortalityMainActivity.intent(this, true)
+                    mainActivityIntent.flags =
+                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(mainActivityIntent)
+                } else {
+                    val setupScreenIntent =
+                        HolderActivity.intent(this, FragmentSetup.FRAGMENT_SETUP_KEY)
+                    setupScreenIntent.flags =
+                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(setupScreenIntent)
+                }
+
             }
         }
     }

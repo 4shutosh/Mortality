@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import com.planner.mortality.R
 import com.planner.mortality.databinding.FragmentSetupBinding
+import com.planner.mortality.ui.MortalityMainActivity
 import com.planner.mortality.ui.setup.steps.FragmentSetupAbout
 import com.planner.mortality.ui.setup.steps.FragmentSetupBirthday
 import com.planner.mortality.ui.setup.steps.FragmentSetupDeath
@@ -80,8 +80,9 @@ class FragmentSetup : Fragment() {
                 Snackbar.make(binding.root, it.message, Snackbar.LENGTH_LONG).show()
             }
             FragmentSetupViewModel.Command.EndSetupProcess -> {
-                val navController = findNavController()
-                navController.navigate(R.id.action_setup_to_main)
+                val mainActivity = MortalityMainActivity.intent(requireContext(), true)
+                requireActivity().startActivity(mainActivity)
+                requireActivity().finish()
             }
         }
     }
@@ -101,7 +102,9 @@ class FragmentSetup : Fragment() {
 
     private val onBackPress = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
-            if (binding.viewPager.currentItem != 0) {
+            if (binding.viewPager.currentItem == 0) {
+                activity?.onBackPressed()
+            } else {
                 binding.viewPager.currentItem -= 1
             }
         }
@@ -111,5 +114,7 @@ class FragmentSetup : Fragment() {
         val listOfChildPages =
             listOf(FragmentSetupAbout(), FragmentSetupBirthday(), FragmentSetupDeath())
         val ctaButtonText = listOf("Get Started", "Proceed →", "Next Step →")
+
+        const val FRAGMENT_SETUP_KEY = R.layout.fragment_setup
     }
 }

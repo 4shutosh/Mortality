@@ -7,12 +7,12 @@ import com.planner.mortality.data.dao.UserDataDao
 import com.planner.mortality.data.entities.UserDataEntity
 import com.planner.mortality.utils.AppCoroutineDispatcher
 import com.planner.mortality.utils.SingleLiveEvent
+import com.planner.mortality.utils.addYearsToTimeStamp
 import com.planner.mortality.utils.extensions.toLiveData
 import com.planner.mortality.utils.getTimeDifferenceInYears
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import logcat.logcat
 import javax.inject.Inject
 
 @HiltViewModel
@@ -73,9 +73,12 @@ class FragmentSetupViewModel @Inject constructor(
     private fun userSetupComplete() {
         viewModelScope.launch(appCoroutineDispatcher.io) {
             if (setupModel.dateOfBirthTimeStamp != -1L) {
+                val userDeathTimeStamp = addYearsToTimeStamp(setupModel.dateOfBirthTimeStamp,
+                    setupModel.lifeExpectancyYears)
                 userDataDao.insert(UserDataEntity(
                     dateOfBirthTimeStamp = setupModel.dateOfBirthTimeStamp,
                     lifeExpectancyYears = setupModel.lifeExpectancyYears,
+                    deathTimestamp = userDeathTimeStamp
                 ))
             }
             _command.postValue(Command.Notify("Setup Complete!"))

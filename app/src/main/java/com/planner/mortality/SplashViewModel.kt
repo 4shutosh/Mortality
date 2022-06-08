@@ -5,10 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.planner.mortality.data.dao.UserDataDao
 import com.planner.mortality.utils.AppCoroutineDispatcher
-import com.planner.mortality.utils.extensions.toLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel

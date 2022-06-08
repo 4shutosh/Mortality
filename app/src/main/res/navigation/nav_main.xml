@@ -5,12 +5,6 @@
     android:id="@+id/nav_main"
     app:startDestination="@id/fragmentRoutine">
 
-    <action
-        android:id="@+id/to_nav_setup"
-        app:destination="@id/nav_setup"
-        app:popUpTo="@navigation/nav_setup"
-        app:popUpToInclusive="true" />
-
     <fragment
         android:id="@+id/fragmentRoutine"
         android:name="com.planner.mortality.ui.routine.FragmentRoutine"
@@ -23,5 +17,4 @@
         android:label="FragmentTimer"
         tools:layout="@layout/fragment_timer" />
 
-    <include app:graph="@navigation/nav_setup" />
 </navigation>

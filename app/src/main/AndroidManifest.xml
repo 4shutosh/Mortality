@@ -27,6 +27,10 @@
         <activity
             android:name=".ui.MortalityMainActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".ui.holder.HolderActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
