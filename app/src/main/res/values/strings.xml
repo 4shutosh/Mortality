@@ -15,6 +15,9 @@
     <string name="ever_thought_about_death">Ever thought about death?\nAt what age would you like to die?</string>
     <string name="control_death">Never thought? Take a chill pill 💊\n\n💡 You are in CONTROL of your quality of life and life span based on your habits</string>
     <string name="death_hint">Lifespan</string>
+    <string name="sleep_desc">Sleep plays a crucial role in optimal day-to-day functioning. A healthy amount of sleep for an adult is 8 to 9 hours.</string>
+    <string name="how_much_do_you_sleep">How much do you sleep?</string>
+    <string name="hours">hours</string>
 
 
 </resources>

@@ -33,6 +33,7 @@ class FragmentSetupViewModel @Inject constructor(
         val dateOfBirthTimeStamp: Long = -1L,
         val userAge: Int = -1,
         val lifeExpectancyYears: Int = -1,
+        val sleepHours: Int = 8,
     )
 
     private var setupModel = MortalityUserSetupModel()
@@ -63,6 +64,9 @@ class FragmentSetupViewModel @Inject constructor(
                     else _command.postValue(Command.Notify("Please add your birth date"))
                 }
                 PAGE_DEATH -> {
+                    _command.postValue(Command.MoveToPage())
+                }
+                PAGE_SLEEP -> {
                     userSetupComplete()
                 }
                 else -> Unit
@@ -78,7 +82,8 @@ class FragmentSetupViewModel @Inject constructor(
                 userDataDao.insert(UserDataEntity(
                     dateOfBirthTimeStamp = setupModel.dateOfBirthTimeStamp,
                     lifeExpectancyYears = setupModel.lifeExpectancyYears,
-                    deathTimestamp = userDeathTimeStamp
+                    deathTimestamp = userDeathTimeStamp,
+                    sleepHours = setupModel.sleepHours
                 ))
             }
             _command.postValue(Command.Notify("Setup Complete!"))
@@ -100,6 +105,9 @@ class FragmentSetupViewModel @Inject constructor(
                 PAGE_DEATH -> {
                     if (setupModel.lifeExpectancyYears != setupModel.userAge && setupModel.lifeExpectancyYears != -1)
                         _command.postValue(Command.EnableCta())
+                }
+                PAGE_SLEEP -> {
+                    _command.postValue(Command.EnableCta())
                 }
                 else -> Unit
             }
@@ -125,10 +133,18 @@ class FragmentSetupViewModel @Inject constructor(
         }
     }
 
+    fun actionSleepAmountSet(sleepHours: Int) {
+        viewModelScope.launch(appCoroutineDispatcher.io) {
+            setupModel = setupModel.copy(sleepHours = sleepHours)
+//            _command.postValue(Command.EnableCta())
+        }
+    }
+
     companion object {
         internal const val PAGE_ABOUT = 0
         internal const val PAGE_BIRTH_DATE = 1
         internal const val PAGE_DEATH = 2
+        internal const val PAGE_SLEEP = 3
     }
 
 

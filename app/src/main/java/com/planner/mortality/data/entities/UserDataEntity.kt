@@ -9,5 +9,6 @@ data class UserDataEntity(
     val dateOfBirthTimeStamp: Long,
     val lifeExpectancyYears: Int,
     val deathTimestamp: Long,
+    val sleepHours: Int
 ) : BaseEntity {
 }

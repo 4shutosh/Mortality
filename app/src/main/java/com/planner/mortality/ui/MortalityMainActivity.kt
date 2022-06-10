@@ -9,11 +9,13 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.planner.mortality.R
 import com.planner.mortality.databinding.ActivityMortalityMainBinding
+import com.planner.mortality.ui.holder.HolderActivity
+import com.planner.mortality.ui.setup.FragmentSetup
+import com.planner.mortality.utils.extensions.bindTime
 import com.planner.mortality.utils.extensions.gone
 import com.planner.mortality.utils.extensions.showToast
 import com.planner.mortality.utils.extensions.visible
 import dagger.hilt.android.AndroidEntryPoint
-import logcat.logcat
 
 @AndroidEntryPoint
 class MortalityMainActivity : AppCompatActivity() {
@@ -32,7 +34,6 @@ class MortalityMainActivity : AppCompatActivity() {
     }
 
     private fun setupViews() {
-        logcat { "setup views $viewModel" }
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragment_container) as NavHostFragment
         val navController = navHostFragment.navController
@@ -40,10 +41,15 @@ class MortalityMainActivity : AppCompatActivity() {
         val isUserSetupDone = intent.getBooleanExtra(USER_SETUP_DONE_KEY, false)
         if (!isUserSetupDone) {
             // move again to setup fragment to holder activity
+            val setupScreenIntent =
+                HolderActivity.intent(this, FragmentSetup.FRAGMENT_SETUP_KEY)
+            setupScreenIntent.flags =
+                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(setupScreenIntent)
+            finish()
         }
 
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            logcat { "destination changed $destination with graph ${navController.graph}" }
+        navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.fragmentRoutine || destination.id == R.id.fragmentTimer) {
                 binding.bottomNavigation.visible()
                 binding.bottomNavigation.setupWithNavController(navController)
@@ -56,24 +62,12 @@ class MortalityMainActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-
         viewModel.command.observe(this) {
             processCommand(it)
         }
 
         viewModel.deathTimerText.observe(this) {
-            val deathTimeYears = "${it.years}\nYears"
-            val deathTimeMonths = "${it.months}\nMonths"
-            val deathTimeDays = "${it.days}\nDays"
-            val deathTimeHours = "${it.hours}\nDays"
-            val deathTimeMinutes = "${it.minutes}\nMinutes"
-            val deathTimeSeconds = "${it.seconds}\nSeconds"
-            binding.tvDeathTimer.tvYears.text = deathTimeYears
-            binding.tvDeathTimer.tvMonths.text = deathTimeMonths
-            binding.tvDeathTimer.tvDays.text = deathTimeDays
-            binding.tvDeathTimer.tvHours.text = deathTimeHours
-            binding.tvDeathTimer.tvMinutes.text = deathTimeMinutes
-            binding.tvDeathTimer.tvSeconds.text = deathTimeSeconds
+            binding.tvDeathTimer.bindTime(it)
         }
     }
 
@@ -83,10 +77,6 @@ class MortalityMainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        logcat { "onDestroy ${this.localClassName}" }
-    }
 
     companion object {
 
