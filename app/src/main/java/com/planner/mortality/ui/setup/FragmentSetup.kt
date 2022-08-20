@@ -15,6 +15,7 @@ import com.planner.mortality.databinding.FragmentSetupBinding
 import com.planner.mortality.ui.MortalityMainActivity
 import com.planner.mortality.ui.setup.steps.FragmentSetupAbout
 import com.planner.mortality.ui.setup.steps.FragmentSetupBirthday
+import com.planner.mortality.ui.setup.steps.FragmentSetupDayEnd
 import com.planner.mortality.ui.setup.steps.FragmentSetupDeath
 import com.planner.mortality.ui.setup.steps.FragmentSetupSleep
 import com.planner.mortality.utils.ViewPagerAdapter
@@ -116,9 +117,10 @@ class FragmentSetup : Fragment() {
             FragmentSetupAbout(),
             FragmentSetupBirthday(),
             FragmentSetupDeath(),
-            FragmentSetupSleep()
+            FragmentSetupSleep(),
+            FragmentSetupDayEnd()
         )
-        val ctaButtonText = listOf("Get Started", "Proceed →", "Next Step →", "Done")
+        val ctaButtonText = listOf("Get Started", "Proceed →", "Next Step →", "Final Step", "Done")
 
         const val FRAGMENT_SETUP_KEY = R.layout.fragment_setup
     }

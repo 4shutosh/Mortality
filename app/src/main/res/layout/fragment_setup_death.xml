@@ -16,7 +16,7 @@
             android:layout_marginTop="40dp"
             android:text="@string/fragment_setup_death_heading"
             android:textColor="@color/theme_1"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -18,6 +18,10 @@
     <string name="sleep_desc">Sleep plays a crucial role in optimal day-to-day functioning. A healthy amount of sleep for an adult is 8 to 9 hours.</string>
     <string name="how_much_do_you_sleep">How much do you sleep?</string>
     <string name="hours">hours</string>
+    <string name="day_end_heading">At what time do you end your day and go to sleep?</string>
+    <string name="day_end_sub_heading">You cannot enter time post midnight</string>
+    <string name="day_end_time_hint">22:00</string>
 
+    <string name="pick_time">Pick Time</string>
 
 </resources>

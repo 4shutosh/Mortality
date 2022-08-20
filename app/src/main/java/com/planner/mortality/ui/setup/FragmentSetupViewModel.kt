@@ -9,10 +9,13 @@ import com.planner.mortality.utils.AppCoroutineDispatcher
 import com.planner.mortality.utils.SingleLiveEvent
 import com.planner.mortality.utils.addYearsToTimeStamp
 import com.planner.mortality.utils.extensions.toLiveData
+import com.planner.mortality.utils.getDaySecondsFromHourMinutes
+import com.planner.mortality.utils.getHoursAndMinutesFromDaySeconds
 import com.planner.mortality.utils.getTimeDifferenceInYears
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import logcat.logcat
 import javax.inject.Inject
 
 @HiltViewModel
@@ -34,6 +37,7 @@ class FragmentSetupViewModel @Inject constructor(
         val userAge: Int = -1,
         val lifeExpectancyYears: Int = -1,
         val sleepHours: Int = 8,
+        val endOfDaySeconds: Int = -1,
     )
 
     private var setupModel = MortalityUserSetupModel()
@@ -67,6 +71,9 @@ class FragmentSetupViewModel @Inject constructor(
                     _command.postValue(Command.MoveToPage())
                 }
                 PAGE_SLEEP -> {
+                    _command.postValue(Command.MoveToPage())
+                }
+                PAGE_DAY_END -> {
                     userSetupComplete()
                 }
                 else -> Unit
@@ -83,7 +90,8 @@ class FragmentSetupViewModel @Inject constructor(
                     dateOfBirthTimeStamp = setupModel.dateOfBirthTimeStamp,
                     lifeExpectancyYears = setupModel.lifeExpectancyYears,
                     deathTimestamp = userDeathTimeStamp,
-                    sleepHours = setupModel.sleepHours
+                    sleepHours = setupModel.sleepHours,
+                    endOfDaySeconds = setupModel.endOfDaySeconds,
                 ))
             }
             _command.postValue(Command.Notify("Setup Complete!"))
@@ -108,6 +116,10 @@ class FragmentSetupViewModel @Inject constructor(
                 }
                 PAGE_SLEEP -> {
                     _command.postValue(Command.EnableCta())
+                }
+                PAGE_DAY_END -> {
+                    if (setupModel.endOfDaySeconds != -1)
+                        _command.postValue(Command.EnableCta())
                 }
                 else -> Unit
             }
@@ -136,7 +148,15 @@ class FragmentSetupViewModel @Inject constructor(
     fun actionSleepAmountSet(sleepHours: Int) {
         viewModelScope.launch(appCoroutineDispatcher.io) {
             setupModel = setupModel.copy(sleepHours = sleepHours)
-//            _command.postValue(Command.EnableCta())
+        }
+    }
+
+    fun actionUserDayEndTimeSet(hour: Int, minutes: Int) {
+        viewModelScope.launch(appCoroutineDispatcher.io) {
+            val daySeconds = getDaySecondsFromHourMinutes(hour, minutes)
+            logcat { "daySeconds origin $hour $minutes to and fro $daySeconds" }
+            setupModel = setupModel.copy(endOfDaySeconds = daySeconds)
+            _command.postValue(Command.EnableCta())
         }
     }
 
@@ -145,6 +165,7 @@ class FragmentSetupViewModel @Inject constructor(
         internal const val PAGE_BIRTH_DATE = 1
         internal const val PAGE_DEATH = 2
         internal const val PAGE_SLEEP = 3
+        internal const val PAGE_DAY_END = 4
     }
 
 

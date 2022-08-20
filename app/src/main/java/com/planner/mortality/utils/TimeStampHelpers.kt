@@ -54,3 +54,20 @@ fun addYearsToTimeStamp(timeStampMilliSeconds: Long, years: Int): Long {
 fun getFormattedDate(timeStampMilliSeconds: Long, format: String = "EEE, MMM d, ''yy"): String {
     return SimpleDateFormat(format, Locale.ENGLISH).format(Date(timeStampMilliSeconds))
 }
+
+fun getHoursAndMinutesFromDaySeconds(daySeconds: Int): Pair<Int, Int> {
+    val hours = (daySeconds / 3600)
+    val minutes = daySeconds % 3600
+    return Pair(hours, minutes)
+}
+
+fun getDaySecondsFromHourMinutes(hour: Int, minutes: Int): Int {
+    val totalSeconds = (hour * 3600) + (minutes * 60)
+    return if (totalSeconds <= 86440) {
+        totalSeconds
+    } else -1
+}
+
+fun Int.formatMinutes(): String {
+    return if (this in 0..9) "0$this" else this.toString()
+}

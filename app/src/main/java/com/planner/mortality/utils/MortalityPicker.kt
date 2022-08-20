@@ -5,6 +5,12 @@ import androidx.fragment.app.FragmentManager
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointBackward
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.TimeFormat
+import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 
 // todo set custom themes here
 class MortalityPicker {
@@ -56,38 +62,39 @@ class MortalityPicker {
         onDismiss: (() -> Unit)? = null,
     ) {
 
-//        val clockFormat = if (is24HourFormat) TimeFormat.CLOCK_24H else TimeFormat.CLOCK_12H
-//        val now = Clock.System.now()
-//
-//        val timeToSet = if (initialTime != -1L) Instant.fromEpochMilliseconds(initialTime)
-//            .toLocalDateTime(TimeZone.currentSystemDefault())
-//        else {
-//            now.toLocalDateTime(TimeZone.currentSystemDefault())
-//        }
+        val clockFormat = if (is24HourFormat) TimeFormat.CLOCK_24H else TimeFormat.CLOCK_12H
+        val now = Clock.System.now()
 
-//        val materialTimePicker = MaterialTimePicker.Builder()
-//            .setTitleText(titleText)
-//            .setHour(timeToSet.hour + 1)
-//            .setMinute(timeToSet.minute)
-//            .setTimeFormat(clockFormat)
-//            .build()
+        val timeToSet = if (initialTime != -1L) Instant.fromEpochMilliseconds(initialTime)
+            .toLocalDateTime(TimeZone.currentSystemDefault())
+        else {
+            now.toLocalDateTime(TimeZone.currentSystemDefault())
+        }
 
-//        if (onDismiss != null) {
-//            materialTimePicker.addOnDismissListener {
-//                onDismiss()
-//            }
-//        }
-//
-//        materialTimePicker.addOnPositiveButtonClickListener {
-//            onSelected(
-//                CollegeAppTimePickerReturn(
-//                    materialTimePicker.hour,
-//                    materialTimePicker.minute
-//                )
-//            )
-//        }
-//
-//        materialTimePicker.show(fragmentManager, DATE_PICKER_TAG)
+        val materialTimePicker = MaterialTimePicker.Builder()
+            .setTitleText(titleText)
+            .setHour(timeToSet.hour + 1)
+            .setMinute(timeToSet.minute)
+            .setTimeFormat(clockFormat)
+            .build()
+
+
+        if (onDismiss != null) {
+            materialTimePicker.addOnDismissListener {
+                onDismiss()
+            }
+        }
+
+        materialTimePicker.addOnPositiveButtonClickListener {
+            onSelected(
+                CollegeAppTimePickerReturn(
+                    materialTimePicker.hour,
+                    materialTimePicker.minute
+                )
+            )
+        }
+
+        materialTimePicker.show(fragmentManager, DATE_PICKER_TAG)
     }
 
     data class CollegeAppTimePickerReturn(
