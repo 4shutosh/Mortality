@@ -4,6 +4,7 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointBackward
+import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
@@ -18,6 +19,9 @@ class MortalityPicker {
     private val constraintsBuilderPast =
         CalendarConstraints.Builder().setValidator(DateValidatorPointBackward.now())
 
+    private val constraintsBuilderFuture =
+        CalendarConstraints.Builder().setValidator(DateValidatorPointForward.now())
+
     companion object {
         private const val DATE_PICKER_TAG = "CollegeAppDatePickerTag"
         private const val TIME_PICKER_TAG = "CollegeAppTimePickerTag"
@@ -26,17 +30,18 @@ class MortalityPicker {
     }
 
 
-    fun showPastDatePickerDialog(
+    fun showPastFutureDatePickerDialog(
         @StringRes titleText: Int,
         fragmentManager: FragmentManager,
         initialDate: Long = -1L,
         onSelected: (Long) -> Unit,
         onDismiss: (() -> Unit)? = null,
+        past: Boolean = true,
     ) {
 
         val materialDatePicker = MaterialDatePicker.Builder.datePicker()
             .setTitleText(titleText)
-            .setCalendarConstraints(constraintsBuilderPast.build())
+            .setCalendarConstraints(if (past) constraintsBuilderPast.build() else constraintsBuilderFuture.build())
             .setSelection(if (initialDate == -1L) INITIAL_BIRTHDATE else initialDate)
             .build()
 

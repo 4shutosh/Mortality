@@ -2,6 +2,7 @@ package com.planner.mortality.di
 
 import android.content.Context
 import androidx.room.Room
+import com.planner.mortality.data.dao.RoutineDao
 import com.planner.mortality.data.dao.UserDataDao
 import com.planner.mortality.data.database.MortalityRoomDatabase
 import dagger.Module
@@ -37,5 +38,9 @@ class DaoModule {
 
     @Provides
     fun provideUserDataDao(db: MortalityRoomDatabase): UserDataDao = db.userDataDao()
+
+
+    @Provides
+    fun provideRoutineDataDao(db: MortalityRoomDatabase): RoutineDao = db.routineDao()
 
 }

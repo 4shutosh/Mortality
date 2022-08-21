@@ -17,4 +17,8 @@
     <style name="NumberPickerTheme" parent="">
         <item name="colorControlNormal">?colorPrimary</item>
     </style>
+
+    <style name="MainDeathTimerTextStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">12sp</item>
+    </style>
 </resources>

@@ -36,7 +36,7 @@ class FragmentSetupBirthday : Fragment() {
 
     private fun setUpViews() {
         binding.cardDate.setOnClickListener {
-            MortalityPicker().showPastDatePickerDialog(
+            MortalityPicker().showPastFutureDatePickerDialog(
                 R.string.pick_your_birthdate,
                 onSelected = {
                     viewModel.actionBirthDateSet(it)

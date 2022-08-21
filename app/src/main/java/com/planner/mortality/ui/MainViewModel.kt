@@ -6,7 +6,9 @@ import androidx.lifecycle.viewModelScope
 import com.planner.mortality.data.dao.UserDataDao
 import com.planner.mortality.utils.AppCoroutineDispatcher
 import com.planner.mortality.utils.MortalityTime
+import com.planner.mortality.utils.MortalityTimeConsumedPercentage
 import com.planner.mortality.utils.SingleLiveEvent
+import com.planner.mortality.utils.calculateDeathPercentages
 import com.planner.mortality.utils.extensions.toLiveData
 import com.planner.mortality.utils.getFormattedDate
 import com.planner.mortality.utils.getMortalityTimeDifference
@@ -24,6 +26,9 @@ class MainViewModel @Inject constructor(
 
     private val _deathTimerText = MutableLiveData<MortalityTime>()
     val deathTimerText = _deathTimerText.toLiveData()
+
+    private val _deathTimerPercentage = MutableLiveData<MortalityTimeConsumedPercentage>()
+    val deathTimerPercentage = _deathTimerPercentage.toLiveData()
 
     private val _command = SingleLiveEvent<Command>()
     val command = _command.toLiveData()
@@ -47,6 +52,7 @@ class MainViewModel @Inject constructor(
                 while (true) {
                     val mortalityTime = getMortalityTimeDifference(userDeathTimeStamp)
                     _deathTimerText.postValue(mortalityTime)
+                    _deathTimerPercentage.postValue(mortalityTime.calculateDeathPercentages(userData.lifeExpectancyYears))
                     delay(500)
                 }
             }
@@ -65,6 +71,5 @@ class MainViewModel @Inject constructor(
             }
         }
     }
-
 
 }

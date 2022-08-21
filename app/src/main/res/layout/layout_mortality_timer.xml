@@ -10,61 +10,75 @@
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingVertical="6dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_years"
+            style="@style/MainDeathTimerTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/death_indicator_6"
             tools:text="10 \nYears" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_months"
+            style="@style/MainDeathTimerTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/death_indicator_5"
             tools:text="10 \nMonths" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_days"
+            style="@style/MainDeathTimerTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/death_indicator_4"
             tools:text="250 \nDays" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_hours"
+            style="@style/MainDeathTimerTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/death_indicator_3"
             tools:text="10 \nHours" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_minutes"
+            style="@style/MainDeathTimerTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/death_indicator_2"
             tools:text="50 \nMin" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_seconds"
+            style="@style/MainDeathTimerTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/death_indicator_1"
             tools:text="45 \nSeconds" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_death"
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/image_skull" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

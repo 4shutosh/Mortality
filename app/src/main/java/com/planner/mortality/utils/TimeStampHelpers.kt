@@ -18,6 +18,15 @@ data class MortalityTime(
     val seconds: Int,
 )
 
+data class MortalityTimeConsumedPercentage(
+    val years: Double,
+    val months: Double,
+    val days: Double,
+    val hours: Double,
+    val minutes: Double,
+    val seconds: Double,
+)
+
 private val systemTimeZone = TimeZone.currentSystemDefault()
 
 
@@ -42,6 +51,26 @@ fun getMortalityTimeDifference(timeStampMilliSeconds: Long): MortalityTime {
         hours = differenceDateTime.hours,
         minutes = differenceDateTime.minutes,
         seconds = differenceDateTime.seconds
+    )
+}
+
+fun MortalityTime.calculateDeathPercentages(
+    lifeExpectancy: Int,
+): MortalityTimeConsumedPercentage {
+    val years = 100 - years.toDouble().div(lifeExpectancy) * 100
+    val months = 100 - months.toDouble().div(12) * 100
+    val days = 100 - days.toDouble().div(365) * 100
+    val hours = 100 - hours.toDouble().div(24) * 100
+    val minutes = 100 - minutes.toDouble().div(60) * 100
+    val seconds = 100 - seconds.toDouble().div(60) * 100
+
+    return MortalityTimeConsumedPercentage(
+        years = years,
+        months = months,
+        days = days,
+        hours = hours,
+        minutes = minutes,
+        seconds = seconds
     )
 }
 
