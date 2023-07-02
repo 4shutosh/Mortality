@@ -26,6 +26,8 @@ class FragmentRoutine : Fragment(R.layout.fragment_routine) {
 
     private lateinit var binding: FragmentRoutineBinding
 
+    private val adapter by lazy { RoutineAdapter() }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -48,19 +50,28 @@ class FragmentRoutine : Fragment(R.layout.fragment_routine) {
     }
 
     private fun setUpObservers() {
-        viewModel.command.observe(viewLifecycleOwner) {
-            when (it) {
+        viewModel.command.observe(viewLifecycleOwner) { command ->
+            when (command) {
                 is RoutineViewModel.Command.ShowDatePickerDialog -> {
                     MortalityPicker().showPastFutureDatePickerDialog(
                         R.string.select_deadline_date,
                         childFragmentManager,
-                        Instant.now().epochSecond,
+                        Instant.now().toEpochMilli(),
                         onSelected = {
-                            viewModel.actionTimeSetByUser()
-                        }
+                            viewModel.actionTimeSetByUser(it)
+                        },
+                        past = false
                     )
                 }
+                RoutineViewModel.Command.ShowSetTitleDialog -> {
+                    SetTitleDialogFragment().show(childFragmentManager,
+                        SetTitleDialogFragment.SET_TITLE_DIALOG_KEY)
+                }
             }
+        }
+
+        viewModel.routines.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
         }
 
         mainViewModel.deathTimerPercentage.observe(viewLifecycleOwner) {

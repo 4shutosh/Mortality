@@ -6,7 +6,7 @@ import com.planner.mortality.data.entities.RoutineEntity
 import com.planner.mortality.data.entities.UserDataEntity
 
 @Database(
-    version = 5,
+    version = 6,
     exportSchema = false,
     entities = [UserDataEntity::class, RoutineEntity::class]
 )

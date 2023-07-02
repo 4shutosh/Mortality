@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey
 data class RoutineEntity(
     @PrimaryKey override val id: Long = 0L,
     val title: String,
+    val description: String,
     val endTimeStamp: Long,
     val isActive: Boolean = true,
 ) : BaseEntity
